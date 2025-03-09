@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('todo-input');
     const todoList = document.getElementById('todo-list');
 
-    // Lataa tehtävät localStoragesta
+
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-    // Näyttää tehtävät listassa
+    // Tää näyttää tehtävät listassa
     function renderTodos() {
         todoList.innerHTML = '';
         todos.forEach((todo, index) => {
@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Lisää tehtävä
+    // Tällä lisätään tehtävä
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         const todoText = input.value.trim();
 
-        // Tarkistetaan syöte
+        // Tarkistaa syötteen
         if (todoText === '') {
             input.classList.add('error');
             return;
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         saveTodos();
     });
 
-    // Poista tehtävä
+    // Poistaa tehtävän
     todoList.addEventListener('click', function(event) {
         if (event.target.classList.contains('delete-btn')) {
             const index = event.target.getAttribute('data-index');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Tallenna tehtävät localStorageen
+    // Tallentaa tehtävät localiin
     function saveTodos() {
         localStorage.setItem('todos', JSON.stringify(todos));
     }
